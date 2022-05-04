@@ -46,13 +46,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang='scss'>
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   color: white;
-  background-color: #202020;
 }
 a {
   color: white;
