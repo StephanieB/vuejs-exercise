@@ -1,26 +1,31 @@
-<template>
-  <div class="CommonTitle">
-    <h1>{{ title }}</h1>
-  </div>
+<template lang="html">
+  <h1
+    :aria-label="title"
+    class="CommonTitle Accessibility-reachableByTab"
+    tabindex="0">
+        <span
+          class="Accessibility-notReachableByClick"
+          tabindex="-1">
+            {{ title }}
+        </span>
+  </h1>
 </template>
 
 <script>
 export default {
-  props: {
-    title: {
-      type: String,
-      required: true
+    props: {
+        title: {
+            type: String,
+            required: true
+        }
     }
-  }
 }
 </script>
 
-<style scoped>
-.CommonTitle h1{
+<style lang='scss' scoped>
+
+.CommonTitle {
   margin: 0;
-  padding: 1em 1em 0.5em 1em;
-  border-bottom: 1px solid #393939;
-  font-size: 46px;
-  text-align: center;
+  text-transform: uppercase;
 }
 </style>

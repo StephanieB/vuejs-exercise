@@ -1,0 +1,72 @@
+/* stylelint-disable plugin/no-browser-hacks */
+
+/* MARGIN */
+$margin-xxlarge: 3.5rem;    /* 56px */
+$margin-xlarge: 2.5rem;     /* 40px */
+$margin-large: 2rem;        /* 32px */
+$margin-medium: 1.5rem;     /* 24px */
+$margin-small: 1rem;        /* 16px */
+$margin-xsmall: .6rem;      /* 10px */
+$margin-xxsmall: .4rem;     /* 6px */
+
+/* PADDING */
+$padding-xxxlarge: 4rem;    /* 64px */
+$padding-xxlarge: 3rem;     /* 48px */
+$padding-xlarge: 2.5rem;    /* 40px */
+$padding-large: 2rem;       /* 32px */
+$padding-medium: 1.5rem;    /* 24px */
+$padding-small: 1rem;       /* 16px */
+$padding-xsmall: .6rem;     /* 10px */
+$padding-xxsmall: .4rem;    /* 6px */
+
+/* FONT SIZE */
+$font-xlarge: 2rem;         /* 32px */
+$font-large: 1.5rem;        /* 24px */
+$font-medium: 1.25rem;      /* 20px */
+$font-small: 1rem;          /* 16px */
+$font-xsmall: .9rem;        /* 14px */
+$font-xxsmall: .8rem;       /* 12px */
+
+/* COMMON COLORS */
+$color-white-transparent: rgba(255, 255, 255, .25);
+$color-white: #fff;
+$color-grey-blue: #f5f6f9;
+$color-grey-ultraLight: #eee;
+$color-grey-light: #bdbdbd;
+$color-grey: #b3b3b3;
+$color-grey-dark: #757575;
+$color-black-transparent: rgba(0, 0, 0, .25);
+$color-black-light: #454545;
+$color-black: #000;
+
+/* CONTEXT COLORS */
+$color-success: #4F8A10;
+$color-success-bg: #DFF2BF;
+$color-info: #31708f;
+$color-info-bg: #d9edf7;
+$color-warning: #9F6000;
+$color-warning-bg: #FEEFB3;
+$color-error: #D8000C;
+$color-error-bg: #FFBABA;
+
+/* MARVEL COLORS */
+$marvel-color-red: #EC040B;
+
+/* BOX SHADOW */
+$boxShadow-ultraLight: 0 1px 5px 0px rgba(0, 0, 0, .1);
+$boxShadow-light: 0 1px 10px 0px $color-black-transparent;
+$boxShadow-light-hovered: 0 1px 10px 6px $color-black-transparent;
+$boxShadow-input-focused: 0 0 5px $color-white;
+$boxShadow-input-accessibility: 0 0 0px 2px white;
+
+/* BORDER RADIUS */
+$borderRadius-rounded: 50%;
+$borderRadius-xlarge: 25px;
+$borderRadius-large: 15px;
+$borderRadius-medium: 5px;
+$borderRadius-small: 2px;
+
+/* MEDIA QUERIES */
+$phone-breakpoint: 320px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1025px;

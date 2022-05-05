@@ -1,3 +1,33 @@
+@import './mixins';
+
 body {
-    background-color: red;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	color: $color-white;
+	background-color: $color-black;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a,
+a:link,
+a:visited,
+a:active {
+	color: white;
+    text-decoration: none;
+}
+
+.Accessibility {
+    &-reachableByTab:focus,
+    &-notReachableByClick:focus {
+        outline: 0;
+    }
+
+    &-reachableByTab:focus-visible > .Accessibility-notReachableByClick  {
+        border-radius: $borderRadius-small;
+        box-shadow: $boxShadow-input-accessibility;
+    }
 }

@@ -1,72 +1,57 @@
 <template>
-  <div class="MarvelCharacters">
-    <!--<common-button
-      :name="buttonName"
-      @buttonClicked="getCharacters"/>-->
-
-    <div
-      v-if="!charactersLoaded"
-      class="MarvelCharacters-loaderContainer" >
-      <img src="@/assets/marvel-loader.gif" class="MarvelCharacters-loaderImg" alt=""/>
-      <p class="MarvelCharacters-loaderText">Loading...</p>
+    <div class="MarvelCharacters">
+        <!--<common-button
+          :name="buttonName"
+          @buttonClicked="getCharacters"/>-->
+        <common-loader v-if="!charactersLoaded"/>
+        <common-list
+            v-else
+            :data="characters"
+            :limit="limitNbPerPage"
+            :totalItem="charactersTotal"/>
     </div>
-   <common-list
-     v-else
-     :data="characters" />
-
-  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import * as actionTypes from '@/store/action-types'
-// import CommonButton from '@/components/common/CommonButton'
+import * as charactersType from '@/js/character-types'
 import CommonList from '@/components/common/CommonList'
+import CommonLoader from '@/components/common/CommonLoader'
 
 export default {
-  components: { CommonList },
-  data: function () {
-    return {
-      buttonName: 'Récupérer la liste des personnages',
-      currentCharacters: [],
-      currentCharactersLoaded: false
-    }
-  },
-  computed: {
-    ...mapState(['characters', 'charactersLoaded']),
-    getCurrentCharacters () {
-      return this.currentCharacters
+    components: { CommonLoader, CommonList },
+    data: function () {
+        return {
+            buttonName: 'Récupérer la liste des personnages',
+            limitNbPerPage: charactersType.ITEM_NB_PER_PAGE
+        }
     },
-    getCurrentCharactersLoaded () {
-      return this.currentCharactersLoaded
-    }
-  },
-  watch: {
-    characters (val) {
-      this.currentCharacters = [...val]
+    computed: {
+        ...mapState(['characters', 'charactersLoaded', 'charactersTotal'])
     },
-    charactersLoaded (val) {
-      this.currentCharactersLoaded = val
+    watch: {
+        $route () {
+            this.getCharacters()
+        }
+    },
+    mounted: function () {
+        this.getCharacters()
+    },
+    methods: {
+        getCharacters () {
+            this.$store.dispatch(actionTypes.GET_CHARACTERS, {
+                page: this.$route.query.page,
+                limit: charactersType.ITEM_NB_PER_PAGE
+            })
+        }
     }
-  },
-  mounted: function () {
-    if (!this.charactersLoaded) {
-      this.$store.dispatch(actionTypes.GET_CHARACTERS)
-    }
-  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.MarvelCharacters-loaderContainer {
-  width: 400px;
-  margin: 5em auto;
-}
-.MarvelCharacters-loaderImg {
-  width: 100%;
-}
-.MarvelCharacters-loaderText {
-  text-align: center;
-}
+<style lang="scss" scoped>
+    .MarvelCharacters {
+        width: 95%;
+        margin: auto;
+    }
 </style>

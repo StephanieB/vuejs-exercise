@@ -15,16 +15,16 @@
 
 <script>
 export default {
-  props: {
-    links: {
-      type: Array,
-      required: true
+    props: {
+        links: {
+            type: Array,
+            required: true
+        }
     }
-  }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .CommonMenu-list {
   margin: 0;
   padding: 0.2em;

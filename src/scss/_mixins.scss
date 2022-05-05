@@ -1,0 +1,86 @@
+@import './variables';
+
+/* Manage text overflow with an ellipsis */
+@mixin handleOverflowTextContent {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+/* Manage background image fill */
+@mixin backgroundImageFill {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+// Manage border around icon
+@mixin borderAroundIcon {
+    padding: 2px;
+	border: 1px solid $color-grey-light;
+    border-radius: 50%;
+}
+
+/* Manage mask when some elements appear */
+@mixin containerMask {
+    display: flex;
+    z-index: 4;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $color-black-transparent;
+    transition: opacity .3s ease;
+}
+
+/* Manage vertical center */
+@mixin verticalCenter {
+    display: flex;
+    align-items: center;
+}
+
+/* Manage error message colors */
+@mixin errorBloc {
+    border-radius: $borderRadius-medium;
+    padding: $padding-small;
+    background-color: $color-error-bg;
+    color: $color-error;
+}
+
+@mixin warningBloc {
+    border-radius: $borderRadius-medium;
+    padding: $padding-small;
+    background-color: $color-warning-bg;
+    color: $color-warning;
+}
+
+@mixin infoBloc {
+    border-radius: $borderRadius-medium;
+    padding: $padding-small;
+    background-color: $color-info-bg;
+    color: $color-info;
+}
+
+@mixin successBloc {
+    border-radius: $borderRadius-medium;
+    padding: $padding-small;
+    background-color: $color-success-bg;
+    color: $color-success;
+}
+
+/* Manage size regarding of the windows size */
+@mixin dynamicCalc ($property, $min-value, $max-value) {
+    #{$property}: calc(#{$min-value + 'px'} + (#{$max-value - $min-value}) * (100vw - 320px) / (1920 - 320));
+}
+
+@mixin outline0 {
+    &:focus {
+        outline: 0;
+    }
+}
+
+@mixin ratio ($width, $height) {
+
+}

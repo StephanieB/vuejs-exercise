@@ -1,62 +1,76 @@
 <template>
   <div class="HelloWord">
     <common-title
-      :title="title"/>
-
-    <common-menu
-      :links="menuLinks"/>
-
-    <router-view v-if="!isHome"></router-view>
-    <div class="HelloWord-content" v-else>
-      <img src="@/assets/marvel-bg.jpg" class="HelloWorld-marvelBackground">
+      :title="title"
+      class="HelloWorld-title"/>
+    <common-menu :links="menuLinks"/>
+    <router-view v-if="!isHome"/>
+    <div
+        v-else
+        class="HelloWord-content">
+      <img
+        class="HelloWorld-marvelBackground"
+        src="@/assets/marvel-bg.jpg" alt=""/>
     </div>
+      <span>{{ getFeedbackError }}</span>
+      <button @click="setFeedbackError">Coucou</button>
   </div>
 </template>
 
 <script>
+import * as pathTypes from '@/js/path-types'
 import CommonMenu from '@/components/common/CommonMenu'
 import CommonTitle from '@/components/common/CommonTitle'
+
 export default {
-  components: { CommonTitle, CommonMenu },
-  data: function () {
-    return {
-      title: 'Marvel',
-      menuLinks: [
-        {
-          name: 'Accueil',
-          routeName: 'home'
-        },
-        {
-          name: 'Comics',
-          routeName: 'comics'
-        },
-        {
-          name: 'Personnages',
-          routeName: 'characters',
-          onClick: 'getCharacters'
+    components: {
+        CommonMenu,
+        CommonTitle
+    },
+    data: function () {
+        return {
+            feedbackError: '',
+            menuLinks: [
+                {
+                    name: 'Accueil',
+                    routeName: pathTypes.HOME
+                },
+                {
+                    name: 'Comics',
+                    routeName: pathTypes.COMICS
+                },
+                {
+                    name: 'Personnages',
+                    routeName: pathTypes.CHARACTERS
+                }
+            ],
+            title: 'Marvel'
         }
-      ]
+    },
+    computed: {
+        isHome: function () {
+            return this.$route.name === pathTypes.HOME
+        }
+    },
+    methods: {
+        setFeedbackError () {
+            this.updateFeedbackMessage({
+                message: 'Salut les artistes',
+                success: false
+            })
+        }
     }
-  },
-  computed: {
-    isHome: function () {
-      return this.$route.name === 'home'
-    }
-  }
 }
 </script>
 
-<style lang='scss'>
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  color: white;
-}
-a {
-  color: white;
-}
-.HelloWorld-marvelBackground {
-  width: 100%;
+<style lang="scss">
+.HelloWorld {
+  &-marvelBackground {
+    width: 100%;
+  }
+
+  &-title {
+    text-align: center;
+  }
 }
 </style>

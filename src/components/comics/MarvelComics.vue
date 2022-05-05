@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .MarvelComics-banner{
   width: 100%;
   height: 200px;

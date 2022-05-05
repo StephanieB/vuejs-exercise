@@ -6,17 +6,16 @@
 
 <script>
 export default {
-  props: {
-    name: {
-      type: String,
-      required: true
+    props: {
+        name: {
+            type: String,
+            required: true
+        }
+    },
+    methods: {
+        onClick () {
+            this.$emit('buttonClicked')
+        }
     }
-  },
-  methods: {
-    onClick () {
-      console.log('click')
-      this.$emit('buttonClicked')
-    }
-  }
 }
 </script>

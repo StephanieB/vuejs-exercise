@@ -4,47 +4,82 @@
       <li v-for="(value, index) in data"
           :key="'character_' + index"
           class="CommonList-item">
-        <div class="CommonList-thumbnailContainer">
           <img
             :src="value.thumbnail.path + '.' + value.thumbnail.extension"
             alt=""
             class="CommonList-thumbnail"/>
-        </div>
-        <p class="CommonList-title">{{ value.name }}</p>
+          <p class="CommonList-title">{{ value.name }}</p>
       </li>
     </ul>
+    <common-pagination
+        :limit="limit"
+        :totalItem="totalItem"/>
   </div>
 </template>
 
 <script>
+import CommonPagination from '@/components/common/CommonPagination'
+
 export default {
-  props: {
-    data: {
-      type: Array,
-      required: true
+    components: { CommonPagination },
+    props: {
+        data: {
+            type: Array,
+            required: true
+        },
+        totalItem: {
+            type: Number,
+            required: true
+        },
+        limit: {
+            type: Number,
+            required: true
+        }
     }
-  }
 }
 </script>
 
-<style scoped>
-.CommonList-container {
-  margin: 0;
-}
-.CommonList-item {
-  display: inline-block;
-  width: 10%;
-  padding: 0.5em;
-}
-.CommonList-thumbnailContainer {
-  height: 200px;
-  overflow: hidden;
-}
-.CommonList-thumbnail {
-  max-width: 100%;
-  min-height: 100%;
-}
-.CommonList-title {
-  padding-top: 0.2em;
+<style lang="scss" scoped>
+.CommonList {
+    &-container {
+        display:flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0 auto;
+        padding: 1em 0 2em 0;
+        &:after {
+            display: block;
+            content: '';
+            clear: both;
+            visibility: hidden;
+        }
+    }
+    &-item {
+        display: block;
+        position: relative;
+        flex: 1 1 16%;
+        width: 40vw;
+        height: 20vw;
+        margin: 0;
+        padding: 1em;
+        float: left;
+        text-align: center;
+    }
+    &-thumbnail {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    &-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0.5em;
+        background: $color-black;
+        color: $color-white;
+    }
 }
 </style>
