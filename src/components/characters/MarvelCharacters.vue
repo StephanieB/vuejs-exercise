@@ -3,7 +3,10 @@
         <!--<common-button
           :name="buttonName"
           @buttonClicked="getCharacters"/>-->
-        <common-loader v-if="!charactersLoaded"/>
+        <global-loader
+            v-if="!charactersLoaded"
+            :showGlobalLoader="true"/>
+
         <common-list
             v-else
             :data="characters"
@@ -17,10 +20,10 @@ import { mapState } from 'vuex'
 import * as actionTypes from '@/store/action-types'
 import * as charactersType from '@/js/character-types'
 import CommonList from '@/components/common/CommonList'
-import CommonLoader from '@/components/common/CommonLoader'
+import GlobalLoader from 'common/components/GlobalLoader'
 
 export default {
-    components: { CommonLoader, CommonList },
+    components: { CommonList, GlobalLoader },
     data: function () {
         return {
             buttonName: 'Récupérer la liste des personnages',

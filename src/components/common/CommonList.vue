@@ -57,9 +57,9 @@ export default {
     &-item {
         display: block;
         position: relative;
-        flex: 1 1 16%;
-        width: 40vw;
-        height: 20vw;
+        flex: 1 1 12%;
+        width: 30vw;
+        height: 15vw;
         margin: 0;
         padding: 1em;
         float: left;

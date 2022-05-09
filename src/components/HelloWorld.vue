@@ -1,7 +1,7 @@
 <template>
   <div class="HelloWord">
     <common-title
-      :title="title"
+      :title="getLocale('roles:page_title')"
       class="HelloWorld-title"/>
     <common-menu :links="menuLinks"/>
     <router-view v-if="!isHome"/>
@@ -43,8 +43,7 @@ export default {
                     name: 'Personnages',
                     routeName: pathTypes.CHARACTERS
                 }
-            ],
-            title: 'Marvel'
+            ]
         }
     },
     computed: {
