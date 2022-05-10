@@ -13,6 +13,7 @@ export default new Vuex.Store({
         characters: [],
         charactersLoaded: false,
         charactersTotal: 0,
-        currentCharactersPage: 1
+        currentCharactersPage: 1,
+        showGlobalLoader: false
     }
 })

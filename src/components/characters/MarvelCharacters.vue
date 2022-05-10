@@ -3,15 +3,13 @@
         <!--<common-button
           :name="buttonName"
           @buttonClicked="getCharacters"/>-->
-        <global-loader
-            v-if="!charactersLoaded"
-            :showGlobalLoader="true"/>
-
-        <common-list
-            v-else
-            :data="characters"
-            :limit="limitNbPerPage"
-            :totalItem="charactersTotal"/>
+        <template v-if="charactersLoaded">
+            <h1>test</h1>
+            <common-list
+                :data="characters"
+                :limit="limitNbPerPage"
+                :totalItem="charactersTotal"/>
+        </template>
     </div>
 </template>
 
@@ -19,12 +17,12 @@
 import { mapState } from 'vuex'
 import * as actionTypes from '@/store/action-types'
 import * as charactersType from '@/js/character-types'
+import * as mutationTypes from '@/store/mutation-types'
 import CommonList from '@/components/common/CommonList'
-import GlobalLoader from 'common/components/GlobalLoader'
 
 export default {
-    components: { CommonList, GlobalLoader },
-    data: function () {
+    components: { CommonList },
+    data () {
         return {
             buttonName: 'Récupérer la liste des personnages',
             limitNbPerPage: charactersType.ITEM_NB_PER_PAGE
@@ -36,10 +34,14 @@ export default {
     watch: {
         $route () {
             this.getCharacters()
+        },
+        charactersLoaded () {
+            this.updateShowGlobalLoader()
         }
     },
-    mounted: function () {
+    mounted () {
         this.getCharacters()
+        this.updateShowGlobalLoader()
     },
     methods: {
         getCharacters () {
@@ -47,6 +49,9 @@ export default {
                 page: this.$route.query.page,
                 limit: charactersType.ITEM_NB_PER_PAGE
             })
+        },
+        updateShowGlobalLoader () {
+            this.$store.commit(mutationTypes.UPDATE_SHOW_GLOBAL_LOADER, !this.charactersLoaded)
         }
     }
 }

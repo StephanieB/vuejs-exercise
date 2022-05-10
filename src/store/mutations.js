@@ -13,5 +13,8 @@ export default {
     },
     [mutationTypes.SET_CURRENT_CHARACTERS_PAGE] (state, page) {
         state.currentCharactersPage = page
+    },
+    [mutationTypes.UPDATE_SHOW_GLOBAL_LOADER] (state, showGlobalLoader) {
+        state.showGlobalLoader = showGlobalLoader
     }
 }

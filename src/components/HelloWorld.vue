@@ -1,5 +1,6 @@
 <template>
   <div class="HelloWord">
+    <global-loader :showGlobalLoader="showGlobalLoader"/>
     <common-title
       :title="getLocale('roles:page_title')"
       class="HelloWorld-title"/>
@@ -18,14 +19,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import * as pathTypes from '@/js/path-types'
 import CommonMenu from '@/components/common/CommonMenu'
 import CommonTitle from '@/components/common/CommonTitle'
+import GlobalLoader from 'common/components/GlobalLoader'
 
 export default {
     components: {
         CommonMenu,
-        CommonTitle
+        CommonTitle,
+        GlobalLoader
     },
     data: function () {
         return {
@@ -47,6 +51,7 @@ export default {
         }
     },
     computed: {
+        ...mapState(['showGlobalLoader']),
         isHome: function () {
             return this.$route.name === pathTypes.HOME
         }
